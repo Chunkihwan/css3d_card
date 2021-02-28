@@ -11,15 +11,23 @@ window.onload = function () {
     wrap = document.querySelector(".contentWrap");
     isMobile = mobileChk();
 
+    var button = document.querySelectorAll("button")[0];
+
+    button.addEventListener("click", function () {
+        button.classList.add("dimd");
+        wrap.classList.add("active");
+    });
+
     if (isMobile) {
         //모바일이면 실행
         if (window.DeviceOrientationEvent) {
-            //모바일 디바이스가 움직임이 감지되면 실행
-            alert(11)
+
             window.addEventListener("deviceorientation", function (event) {
+                //디바이스가 움직임 감지될때 실행
                 x = event.gamma;
                 y = event.beta;
-            }, true);
+
+            }, false);
         }
         loopMobile();
 
