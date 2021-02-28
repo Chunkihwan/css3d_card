@@ -21,8 +21,26 @@ window.onload = function () {
         DeviceOrientationEvent.requestPermission()
             .then(function () {
                 console.log('DeviceOrientationEvent, DeviceMotionEvent enabled');
+                alert("ios")
             })
     });
+
+    // if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    //     document.body.addEventListener('click', function () {
+    //         DeviceOrientationEvent.requestPermission()
+    //             .then(function () {
+
+    //             })
+    //             .catch(function (error) {
+    //                 console.warn('DeviceOrientationEvent, DeviceMotionEvent not enabled', error);
+
+    //             })
+    //     }, {
+    //         once: true
+    //     });
+    //     return;
+    // }
+
 
     if (isMobile) {
         //모바일이면 실행
