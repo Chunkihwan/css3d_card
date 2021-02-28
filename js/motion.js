@@ -20,8 +20,14 @@ window.onload = function () {
         //ios일때만 실행
         DeviceOrientationEvent.requestPermission()
             .then(function () {
-                console.log('DeviceOrientationEvent, DeviceMotionEvent enabled');
-                alert("ios")
+                // console.log('DeviceOrientationEvent, DeviceMotionEvent enabled');
+                window.addEventListener("deviceorientation", function (event) {
+                    //디바이스가 움직임 감지될때 실행
+                    x = event.gamma;
+                    y = event.beta;
+
+                }, false);
+                loopMobile();
             })
     });
 
@@ -44,13 +50,13 @@ window.onload = function () {
 
     if (isMobile) {
         //모바일이면 실행
-        window.addEventListener("deviceorientation", function (event) {
-            //디바이스가 움직임 감지될때 실행
-            x = event.gamma;
-            y = event.beta;
+        // window.addEventListener("deviceorientation", function (event) {
+        //     //디바이스가 움직임 감지될때 실행
+        //     x = event.gamma;
+        //     y = event.beta;
 
-        }, false);
-        loopMobile();
+        // }, false);
+        // loopMobile();
 
     } else {
         //pc면 실행
