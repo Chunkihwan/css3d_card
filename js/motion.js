@@ -44,8 +44,13 @@ function loopMobile() {
 function loop() {
     mx += (x - mx) * .1;
     my += (y - my) * .1;
+    //가속도 설정. 뒤의 값을 변경하면 가속도 값 변경
+
     wrap.style.transform = "translate3d(-50%, -50%, 0) rotateX(" + (my / 10) + "deg) rotateY(" + (-mx / 10) + "deg)";
+    //마우스 위치에 따른 대상의 움직임 위치 셋팅
+
     window.requestAnimationFrame(loop);
+    //반복 실행
 }
 
 
