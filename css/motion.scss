@@ -1,156 +1,166 @@
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
 @mixin fontAdd() {
-    font-family:  'Handlee', cursive, "Apple SD Gothic Neo", arial;
+    font-family: 'Handlee', cursive, "Apple SD Gothic Neo", arial;
 }
 
 body {
-    background : #50759b;
+    background: #50759b;
     overflow: hidden;
 }
 
 .contentWrap {
-    position : absolute;
+    position: absolute;
     top: 51%;
-    left:50%;
-    transform : translate(-50%, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     transform-style: preserve-3d;
     perspective: 800px;
 
     .front {
         position: relative;
         width: 400px;
-        height : 250px;
-        // background: #10264a url(../image/snow.png) center center / cover;
+        height: 250px;
         background: #10264a;
-        transform : rotateX(-10deg);
-        transform-origin : bottom center;
+        transform: rotateX(-10deg);
+        transform-origin: bottom center;
         transform-style: preserve-3d;
         perspective: 800px;
-        border-bottom : none;
+        border-bottom: none;
         border-radius: 10px 10px 0 0;
 
         h1 {
             position: absolute;
-            top:0; left: 0;
-            width:100%;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 200px;
             background: url(../image/text.png) center top / 200px no-repeat;
-            transform : translate3d(55px,40px, 57px);
+            transform: translate3d(55px, 40px, 57px);
         }
+
         .sun {
             position: absolute;
-            top:0; left: 0;
-            width:100px;
+            top: 0;
+            left: 0;
+            width: 100px;
             height: 100px;
             background: url(../image/sun.png) center bottom / 60px no-repeat;
-            transform : translate3d(30px, 50px, 10px);
+            transform: translate3d(30px, 50px, 10px);
         }
+
         .cloud1 {
             position: absolute;
-            top:0;
-            width:100px;
-            height: 100px ;
+            top: 0;
+            width: 100px;
+            height: 100px;
             background: url(../image/cloud.png) center center / 40px no-repeat;
-            transform : translate3d(70px, 60px, 30px);
+            transform: translate3d(70px, 60px, 30px);
             opacity: .8;
-            z-index : 10;
+            z-index: 10;
         }
+
         .cloud2 {
             position: absolute;
-            top:0;
-            width:100px;
-            height: 100px ;
+            top: 0;
+            width: 100px;
+            height: 100px;
             background: url(../image/cloud.png) center center / 36px no-repeat;
-            transform : translate3d(-20px, 90px, 40px);
+            transform: translate3d(-20px, 90px, 40px);
             opacity: .8;
-            z-index : 10;
+            z-index: 10;
         }
 
         .m1 {
             position: absolute;
-            bottom:0; right:0;
+            bottom: 0;
+            right: 0;
             width: 90%;
             height: 200px;
             background: url(../image/m1.png) right bottom / 55% no-repeat;
-            transform : translate3d(-8px, 0, 26px);
+            transform: translate3d(-8px, 0, 26px);
         }
+
         .m2 {
             position: absolute;
-            bottom:0; right:0;
+            bottom: 0;
+            right: 0;
             width: 90%;
             height: 200px;
             background: url(../image/m2.png) right bottom / 100% no-repeat;
-            transform : translate3d(-10px, 0, 45px);
+            transform: translate3d(-10px, 0, 45px);
         }
 
         .snow {
             position: absolute;
-            bottom:0; left:0;
-            width:100%;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             height: 230px;
             background: url(../image/snow.png) center bottom / 90% no-repeat;
-            transform : translate3d(0, 0, 35px);
+            transform: translate3d(0, 0, 35px);
         }
 
         .m3 {
             position: absolute;
-            bottom:0; right:0;
-            width:90%;
+            bottom: 0;
+            right: 0;
+            width: 90%;
             height: 200px;
             background: url(../image/m3.png) right bottom / 75% no-repeat;
-            transform : translate3d(-20px, 0, 70px);
+            transform: translate3d(-20px, 0, 70px);
         }
 
         .cow {
             position: absolute;
             width: 70px;
-            height : 70px;
-            bottom:0;
+            height: 70px;
+            bottom: 0;
             left: 0;
             z-index: 10;
             background: url(../image/cow.png) center center / 100% no-repeat;
-            transform : translate3d( 65px, -9px, 48px);
+            transform: translate3d(65px, -9px, 48px);
         }
     }
 
     .back {
         position: relative;
         width: 400px;
-        height : 200px;
-        background: linear-gradient(180deg, #d8d8d8 , #fff);
-        transform : rotateX(70deg);
-        transform-origin : top center;
-        border-top : none;
+        height: 200px;
+        background: linear-gradient(180deg, #d8d8d8, #fff);
+        transform: rotateX(70deg);
+        transform-origin: top center;
+        border-top: none;
         transform-style: preserve-3d;
         perspective: 800px;
         border-radius: 0 0 10px 10px;
 
         h3 {
             position: absolute;
-            font-size : 12px;
+            font-size: 12px;
             text-align: right;
             font-weight: 100;
-            right:0px;
-            bottom:0;
-            transform-origin : bottom;
-            transform : translate3d(-20px,0px,2px);
-            color:#000;
+            right: 0px;
+            bottom: 0;
+            transform-origin: bottom;
+            transform: translate3d(-20px, 0px, 2px);
+            color: #000;
             @include fontAdd();
         }
+
         .msg {
             position: absolute;
             display: block;
             width: 100%;
-            font-size : 12px;
+            font-size: 12px;
             text-align: center;
             font-weight: 100;
             top: 100px;
             left: 0px;
-            
-            transform-origin : bottom;
-            transform : translate3d(0px,0px,2px);
-            color:#000;
+
+            transform-origin: bottom;
+            transform: translate3d(0px, 0px, 2px);
+            color: #000;
         }
     }
 }
-
