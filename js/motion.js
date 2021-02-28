@@ -17,27 +17,45 @@ window.onload = function () {
         button.classList.add("dimd");
         wrap.classList.add("active");
 
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            DeviceOrientationEvent.requestPermission()
-                .then(permissionState => {
-                    if (permissionState === 'granted') {
-                        alert(1)
-                        // window.addEventListener('deviceorientation', () => {});
-                        window.addEventListener("deviceorientation", function (event) {
-                            //디바이스가 움직임 감지될때 실행
-                            x = event.gamma;
-                            y = event.beta;
+        // if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        //     DeviceOrientationEvent.requestPermission()
+        //         .then(permissionState => {
+        //             if (permissionState === 'granted') {
+        //                 alert(1)
+        //                 // window.addEventListener('deviceorientation', () => {});
+        //                 window.addEventListener("deviceorientation", function (event) {
+        //                     //디바이스가 움직임 감지될때 실행
+        //                     x = event.gamma;
+        //                     y = event.beta;
 
-                        }, false);
-                        loopMobile();
-                    }
-                })
-                .catch(console.error);
-        } else {
-            // handle regular non iOS 13+ devices
-            alert(2)
-        }
+        //                 }, false);
+        //                 loopMobile();
+        //             }
+        //         })
+        //         .catch(console.error);
+        // } else {
+        //     // handle regular non iOS 13+ devices
+        //     alert(2)
+        // }
     });
+
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        document.body.addEventListener('click', function () {
+            DeviceOrientationEvent.requestPermission()
+                .then(function () {
+                    console.log('DeviceOrientationEvent, DeviceMotionEvent enabled');
+                    alert(1)
+                })
+                .catch(function (error) {
+                    console.warn('DeviceOrientationEvent, DeviceMotionEvent not enabled', error);
+                    alert(2)
+                })
+        }, {
+            once: true
+        });
+        return;
+    }
+
 
     if (isMobile) {
         //모바일이면 실행
