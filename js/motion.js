@@ -14,6 +14,7 @@ window.onload = function () {
     if (isMobile) {
         //모바일이면 실행
         if (window.DeviceOrientationEvent) {
+            //모바일 디바이스가 움직임이 감지되면 실행
             window.addEventListener("deviceorientation", function (event) {
                 x = event.gamma;
                 y = event.beta;
@@ -26,6 +27,7 @@ window.onload = function () {
         window.addEventListener("mousemove", function (e) {
             x = (e.clientX - window.innerWidth / 2);
             y = (e.clientY - window.innerHeight / 2);
+            //마우스 위치값을 화면의 정가운데가 0,0이 되도록 맞춤
         });
         loop();
     }
