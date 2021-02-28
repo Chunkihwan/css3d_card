@@ -13,13 +13,14 @@ window.onload = function () {
 
     if (isMobile) {
         //모바일이면 실행
-        if (window.DeviceOrientationEvent) {
-            //모바일 디바이스가 움직임이 감지되면 실행
-            window.addEventListener("deviceorientation", function (event) {
-                x = event.gamma;
-                y = event.beta;
-            });
-        }
+        // if (window.DeviceOrientationEvent) {
+        //모바일 디바이스가 움직임이 감지되면 실행
+
+        window.addEventListener("deviceorientation", function (event) {
+            x = event.gamma;
+            y = event.beta;
+        }, true);
+        // }
         loopMobile();
 
     } else {
