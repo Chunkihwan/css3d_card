@@ -12,7 +12,6 @@ window.onload = function () {
     wrap = document.querySelector(".contentWrap");
     isMobile = mobileChk();
     isIos = iosChk();
-    alert(isIos)
 
     var button = document.querySelectorAll("button")[0];
 
@@ -75,7 +74,7 @@ function loop() {
 
 
 function mobileChk() {
-    var mobileKeyWords = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    var mobileKeyWords = new Array('Android', 'iPhone', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
     for (var info in mobileKeyWords) {
         if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
             return true;
@@ -85,7 +84,7 @@ function mobileChk() {
 }
 
 function iosChk(){
-    var mobileKeyWords = new Array('iPhone', 'iPod');
+    var mobileKeyWords = new Array('iPhone', 'iPad');
     for (var info in mobileKeyWords) {
         if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
             return true;
