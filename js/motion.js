@@ -11,6 +11,8 @@ var isIos = false;
 window.onload = function () {
     wrap = document.querySelector(".contentWrap");
     isMobile = mobileChk();
+    isIos = iosChk();
+    alert(isIos)
 
     var button = document.querySelectorAll("button")[0];
 
@@ -18,11 +20,9 @@ window.onload = function () {
         button.classList.add("dimd");
         wrap.classList.add("active");
 
-
         if (isMobile) {
             //모바일이면 실행
-
-            if(isIos()){
+            if(isIos){
                 //ios일때만 실행
                 DeviceOrientationEvent.requestPermission()
                 .then(function () {
@@ -84,7 +84,7 @@ function mobileChk() {
     return false;
 }
 
-function isIos(){
+function iosChk(){
     var mobileKeyWords = new Array('iPhone', 'iPod');
     for (var info in mobileKeyWords) {
         if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
