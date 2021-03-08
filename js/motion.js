@@ -6,6 +6,7 @@ var mx = 0,
 var orientNumX = 0;
 var orientNumY = 0;
 var isMobile = false;
+var isIos = false;
 
 window.onload = function () {
     wrap = document.querySelector(".contentWrap");
@@ -17,57 +18,40 @@ window.onload = function () {
         button.classList.add("dimd");
         wrap.classList.add("active");
 
-        //ios일때만 실행
-        DeviceOrientationEvent.requestPermission()
-            .then(function () {
-                // console.log('DeviceOrientationEvent, DeviceMotionEvent enabled');
+
+        if (isMobile) {
+            //모바일이면 실행
+
+            if(isIos()){
+                //ios일때만 실행
+                DeviceOrientationEvent.requestPermission()
+                .then(function () {
+                    // console.log('DeviceOrientationEvent, DeviceMotionEvent enabled');
+                    mobileOrientationChk();
+                }).catch( console.error )
+            }else{
+                mobileOrientationChk();
+            }
+
+            function mobileOrientationChk(){
                 window.addEventListener("deviceorientation", function (event) {
                     //디바이스가 움직임 감지될때 실행
                     x = event.gamma;
                     y = event.beta;
-
-                }, false);
+                });
                 loopMobile();
-            })
+            }
+
+        } else {
+            //pc면 실행
+            window.addEventListener("mousemove", function (e) {
+                x = (e.clientX - window.innerWidth / 2);
+                y = (e.clientY - window.innerHeight / 2);
+                //마우스 위치값을 화면의 정가운데가 0,0이 되도록 맞춤
+            });
+            loop();
+        }
     });
-
-    // if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    //     document.body.addEventListener('click', function () {
-    //         DeviceOrientationEvent.requestPermission()
-    //             .then(function () {
-
-    //             })
-    //             .catch(function (error) {
-    //                 console.warn('DeviceOrientationEvent, DeviceMotionEvent not enabled', error);
-
-    //             })
-    //     }, {
-    //         once: true
-    //     });
-    //     return;
-    // }
-
-
-    if (isMobile) {
-        //모바일이면 실행
-        // window.addEventListener("deviceorientation", function (event) {
-        //     //디바이스가 움직임 감지될때 실행
-        //     x = event.gamma;
-        //     y = event.beta;
-
-        // }, false);
-        // loopMobile();
-
-    } else {
-        //pc면 실행
-        window.addEventListener("mousemove", function (e) {
-            x = (e.clientX - window.innerWidth / 2);
-            y = (e.clientY - window.innerHeight / 2);
-            //마우스 위치값을 화면의 정가운데가 0,0이 되도록 맞춤
-        });
-        loop();
-    }
-
 }
 
 function loopMobile() {
@@ -92,6 +76,16 @@ function loop() {
 
 function mobileChk() {
     var mobileKeyWords = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    for (var info in mobileKeyWords) {
+        if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function isIos(){
+    var mobileKeyWords = new Array('iPhone', 'iPod');
     for (var info in mobileKeyWords) {
         if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
             return true;
